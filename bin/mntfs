@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+disk_item=`mount | grep disk | grep -v disk1 | grep '(ntfs' | grep 'read-only' | head -1 | awk '{print $1}'`
+disk_tmnt=`mount | grep disk | grep -v disk1 | grep '(ntfs' | grep 'read-only' | head -1 | awk '{print $3}'`
+umount $disk_item
+mkdir "$disk_tmnt"
+mount_ntfs -o rw,nobrowse $disk_item "$disk_tmnt"
+echo "mount the volume at mode w successfully: `mount | grep disk | grep -v disk1 | grep $disk_item`"
+open $disk_tmnt

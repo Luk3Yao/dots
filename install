@@ -1,0 +1,166 @@
+#!/bin/bash
+
+curdir() {
+    #SCRIPTDIR=$(cd $(dirname "${BASH_SOURCE[0]}") >/dev/null && pwd)
+    SOURCE="${BASH_SOURCE[0]}"
+    while [ -h "${SOURCE}" ]; do
+        SCRIPTDIR="$(cd -P "$(dirname "${SOURCE}")" >/dev/null && pwd)"
+        SOURCE="$(readlink "${SOURCE}")"
+        [[ ${SOURCE} != /* ]] && SOURCE="${SCRIPTDIR}/${SOURCE}"
+    done
+    SCRIPTDIR="$(cd -P "$(dirname "${SOURCE}")" >/dev/null && pwd)"
+
+    echo ${SCRIPTDIR}
+}
+
+mecho() {
+    SAVEIFS=$IFS
+    IFS=","
+
+    arr=$1
+    for ev in ${arr[*]}
+    do
+    if [ $# -eq 2 ] && [ "$2" == "-t" ]; then
+        echo "$ev"  | grep -o "[^ ]\+\( \+[^ ]\+\)*"
+    else
+        echo "$ev"
+    fi
+    done
+
+    IFS=$SAVEIFS
+}
+
+igo() {
+    brew install go 2&>1 > /dev/null
+    if [ $? -eq 0 ]; then
+    echo "installed successfully"
+    echo "please assign you GOPATH"
+    read -r -t 60 -p "you gopath[~/.gopher]" gopath
+    if $gopath; then
+        madir -p "$gopath/{src,pkg,bin}"
+    else
+        mkdir -p ~/.gopher/{src,bin,pkg}
+    fi
+    fi
+    local OUTPUTS=("patch the following to you rc file",
+    "export GOROOT=/usr/local/go",
+    "export GOBIN=\$GOROOT/bin",
+    "export GOARCH=amd64",
+    "export GOOS=darwin",
+    "export GOPATH=\${gopath}",
+    "export GO111MODULE=auto",
+    "export PATH=\$PATH:\$GOBIN:\$GOPATH/bin")
+    mecho "${OUTPUTS[*]}" -t
+}
+
+usage() {
+
+    local USAGE=(
+    "Usage:",
+    "   ./install <Command> [Options]")
+    mecho "${USAGE[*]}"
+
+    local COMMAND=(
+    "Command",
+    "   i|init",
+    "       init the rc file",
+    "   d|detect",
+    "       detect [options] whether installed")
+    mecho "${COMMAND[*]}"
+
+}
+
+usagetest() {
+    local OUTPUTS=("patch the following to you rc file",
+    "export GOROOT=/usr/local/go",
+    "export GOBIN=\$GOROOT/bin",
+    "export GOARCH=amd64",
+    "export GOOS=darwin",
+    "export GOPATH=\${gopath}",
+    "export GO111MODULE=auto",
+    "export PATH=\$PATH:\$GOBIN:\$GOPATH/bin")
+    mecho "${OUTPUTS[*]}" -t
+}
+
+init() {
+    if [ "$(uname)" == "Darwin" ]
+    then
+    if [ -e ~/.bash_profile ];then
+        mv ~/.bash_profile ~/.bash_profileb
+    fi
+    ln -s ~/.dots/bash/.bashrc ~/.bash_profile
+    else
+    if [ -e ~/.bash_profile ];then
+        mv ~/.bashrc ~/.bashrcb
+    fi
+    ln -s ~/.dots/bash/.bashrc ~/.bashrc
+    fi
+}
+
+detect(){
+    noninstall=()
+    checks=(go cargo node zsh lolcat cowsay figlet prettyping bat)
+    for i in ${checks[*]};
+    do
+    if command -v "$i" > /dev/null;then
+        echo "[🍺]    $i"
+    else
+        noninstall[${#noninstall}]=g
+    fi
+    done
+
+    if [ ${#noninstall[*]} -gt 0 ]; then
+    echo "there are some components not installed yet"
+    read -r -p "to install them or not [y|N]" -t 60 name
+    case $name in
+        n|N)
+        echo "the following remain to non-install"
+        for ni in ${noninstall[*]}
+        do
+            echo "[🔕]    $ni"
+        done
+        ;;
+        *)
+        for ni in ${noninstall[*]}
+        do
+
+            if [ $ni == "cargo" ]; then
+            echo ""
+            elif [ $ni == "bat" ]; then
+            echo ""
+            else
+            brew install "$ni" 2>&1 > /dev/null
+            fi
+
+            if [ $? -eq 0 ]; then
+            echo "[🍺]    $ni"
+            else
+            echo "[🔔]    $ni"
+            fi
+        done
+        ;;
+    esac
+    fi
+}
+
+if [ $# -gt 0 ]; then
+    case $1 in
+    p|prepare)
+        go build -o ~/.dots/utils/exec.o $HOME/.dots/utils/exec.go
+        go build -o ~/.dots/utils/tick.o $HOME/.dots/utils/tick.go
+        ;;
+    i|init)
+        init
+        ;;
+    d|detect)
+        echo "detecting ... "
+        detect
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
+    esac
+else
+    usage
+fi
