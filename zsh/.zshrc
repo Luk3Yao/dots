@@ -237,6 +237,7 @@ alias du='ncdu'
 alias python3='$HOME/.pyenv/versions/anaconda3-5.3.1/bin/python3'
 alias pip3='python3 -m pip'
 alias tmux="TERM=screen-256color-bce tmux"
+alias dops="docker ps --format='table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'"
 ######################## personal aliases ############################
 
 ######################## other components ############################
