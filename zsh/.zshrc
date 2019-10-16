@@ -6,7 +6,7 @@ function init() {
 	# echo ""
     } else {
 	echo "init the env"
-	git clone --depth=1 https://github.com/oneTOinf/oh-my-zsh.git ~/.oh-my-zsh && \
+    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh && \
     cd ~/.oh-my-zsh/plugins && \
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git && \
     git clone --depth=1 https://github.com/zsh-users/zsh-completions.git && \
@@ -234,7 +234,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias cat='bat'
 alias du='ncdu'
-alias python3='$HOME/.pyenv/versions/anaconda3-5.3.1/bin/python3'
+alias python3='~/.pyenv/versions/anaconda3-5.3.1/bin/python3'
 alias pip3='python3 -m pip'
 alias tmux="TERM=screen-256color-bce tmux"
 alias dops="docker ps --format='table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'"
