@@ -234,10 +234,12 @@ alias vim="nvim"
 alias vi="nvim"
 alias cat='bat'
 alias du='ncdu'
-alias python3='~/.pyenv/versions/anaconda3-5.3.1/bin/python3'
+# alias python3='~/.pyenv/versions/anaconda3-5.3.1/bin/python3'
 alias pip3='python3 -m pip'
 alias tmux="TERM=screen-256color-bce tmux"
 alias dops="docker ps --format='table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'"
+alias urlen='python3 -c "import sys, urllib.parse as ulp; print(ulp.quote(sys.argv[1]))"'
+alias urlde='python3 -c "import sys, urllib.parse as ulp; print(ulp.unquote(sys.argv[1]))"'
 ######################## personal aliases ############################
 
 ######################## other components ############################
@@ -267,3 +269,7 @@ bindkey -s '^g' 'ranger\n'
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+export PATH="/Users/whoami/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

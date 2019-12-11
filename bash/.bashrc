@@ -34,13 +34,17 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PATH=$PATH:$HOME/.pub-cache/bin
 
 # go env
-export GOROOT=/usr/local/go
+export GOROOT="/usr/local/Cellar/go/1.13.4"
 export GOBIN=$GOROOT/bin
 export GOARCH=amd64
 export GOOS=darwin
 export GOPATH=$HOME/.gopher
 export GO111MODULE=auto
 export PATH=$PATH:$GOBIN:$GOPATH/bin
+
+# rabbitmq
+export RABBIT_HOME="/usr/local/Cellar/rabbitmq/3.8.1"
+export PATH="$RABBIT_HOME/sbin:$PATH"
 
 # tldr
 export TLDR_HEADER='magenta bold underline'
@@ -49,9 +53,6 @@ export TLDR_DESCRIPTION='green'
 export TLDR_CODE='red'
 export TLDR_PARAM='blue'
 
-# cargo
-export PATH=$PATH:$HOME/.cargo/bin
-
 # pyenv
 export PYENV_ROOT=$HOME/.pyenv
 export PYTHON_BUILD_ARIA2_OPTS='-x 10 -k 1M'
@@ -59,13 +60,24 @@ export PYTHON_BUILD_ARIA2_OPTS='-x 10 -k 1M'
 # custom command
 export PATH=$PATH:$HOME/.dots/bin
 
-# anaconda3
-export PATH=$PATH:$HOME/.pyenv/versions/anaconda3-5.3.1/bin
-
 # pgsql
 export PATH=$PATH:/Library/PostgreSQL/11/bin
 
+# mongodb
+export PATH="/usr/local/Cellar/mongodb/4.2.1:$PATH"
+
+# neovim
 export EDITOR=nvim
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+
+# ctags
+alias ctags=/usr/local/bin/ctags
+
+# markup localhost
+export MyHOST="127.0.0.1"
 
 bash -c zsh
+
