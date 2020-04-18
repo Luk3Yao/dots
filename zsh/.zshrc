@@ -1,77 +1,77 @@
 ################## self-defined function & command ####################
 function init() {
     if [[ -d ~/.oh-my-zsh ]] {
-	# fortuen_lol_cow
-	# figlet "Code Once" | lolcat -f
-	# echo ""
+        # fortuen_lol_cow
+        # figlet "Code Once" | lolcat -f
+        # echo ""
     } else {
-	echo "init the env"
-    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh && \
-    cd ~/.oh-my-zsh/plugins && \
-    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git && \
-    git clone --depth=1 https://github.com/zsh-users/zsh-completions.git && \
-    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git && \
-    cp -r ~/.dots/zsh/oh-my-zsh.sh ~/.oh-my-zsh/oh-my-zsh.sh && \
-	figlet enjoy | lolcat -f
+        echo "init the env"
+        git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh && \
+        cd ~/.oh-my-zsh/plugins && \
+        git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git && \
+        git clone --depth=1 https://github.com/zsh-users/zsh-completions.git && \
+        git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git && \
+        cp -r ~/.dots/zsh/oh-my-zsh.sh ~/.oh-my-zsh/oh-my-zsh.sh && \
+        figlet enjoy | lolcat -f
     }
-
 }
 
 function proxy () {
     if (( $# > 0 )) {
-	case $1 {
-	    (-u) export http_proxy=http://127.0.0.1:$2
-		export https_proxy=$http_proxy
-		if (( $# > 1 )) {
-		    echo "🚀 set proxy to port $2"
-		} else {
-		    echo "🧩 not enough params"
-		}
-		;|
-	    (-d) unset http_proxy
-		unset https_proxy
-		echo "⚓ unset proxy"
-		;;
-	}
+    case $1 {
+        (-u)
+            export http_proxy=http://127.0.0.1:$2
+            export https_proxy=$http_proxy
+            if (( $# > 1 )) {
+                echo "🚀 set proxy to port $2"
+            } else {
+                echo "🧩 not enough params"
+            }
+        ;|
+        (-d)
+            unset http_proxy
+            unset https_proxy
+            echo "⚓ unset proxy"
+        ;;
+    }
     } else {
-	echo "current proxy status:"
-	echo "🚇 http : $http_proxy"
-	echo "🚆 https: $https_proxy"
+        echo "current proxy status:"
+        echo "🚇 http : $http_proxy"
+        echo "🚆 https: $https_proxy"
     }
 }
 
 function gproxy () {
     if (( $# > 0 )) {
-	case $1 {
-	    (-u)
-		git config --global http.proxy http://127.0.0.1:$2
-		git config --global https.proxy https://127.0.0.1:$2
-		if (( $# > 1 )) {
-		    echo "🚀 set git proxy to port $2"
-		} else {
-		    echo "🧩 not enough params"
-		}
-		;|
-	    (-d)
-		git config --global --unset http.proxy
-		git config --global --unset https.proxy
-		echo "⚓ unset proxy"
-		;;
-	}
+        case $1 {
+            (-u)
+            git config --global http.proxy http://127.0.0.1:$2
+            git config --global https.proxy https://127.0.0.1:$2
+            if (( $# > 1 )) {
+                echo "🚀 set git proxy to port $2\c"
+            } else {
+                echo "🧩 not enough params"
+            }
+            ;|
+            (-d)
+                git config --global --unset http.proxy
+                git config --global --unset https.proxy
+                echo "⚓ unset proxy"
+            ;;
+        }
     } else {
-	local ghttp=$(git config --global --get http.proxy)
-	local ghttps=$(git config --global --get https.proxy)
-	echo "current git proxy status:"
-	echo "🚇 http :  $ghttp"
-	echo "🚆 https: $ghttps"
-
+        local ghttp=$(git config --global --get http.proxy)
+        local ghttps=$(git config --global --get https.proxy)
+        echo "current git proxy status:"
+        echo "🚇 http :  $ghttp"
+        echo "🚆 https: $ghttps"
     }
 }
 
 function fortuen_lol_cow () {
     COLS=$(tput cols)
     if (( $COLS > 80 )) {
-	COLS=80
+    COLS=80
     }
     # echo $COLS
     fortune -a | cowsay -W $(( ${COLS}-8 )) | lolcat -f
@@ -240,6 +240,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias dops="docker ps --format='table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'"
 alias urlen='python3 -c "import sys, urllib.parse as ulp; print(ulp.quote(sys.argv[1]))"'
 alias urlde='python3 -c "import sys, urllib.parse as ulp; print(ulp.unquote(sys.argv[1]))"'
+alias nadb="/Applications/Nox\ App\ Player.app/Contents/MacOS/adb"
 ######################## personal aliases ############################
 
 ######################## other components ############################

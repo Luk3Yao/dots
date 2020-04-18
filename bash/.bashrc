@@ -13,14 +13,19 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 # proxy
-export no_proxy=localhost,127.0.0.1,localaddress,.localdomain.com,github.com,www.bilibili.com,pub.flutter-io.cn,storage.flutter-io.cn
+# export http_proxy="http://127.0.0.1:50086"
+# export https_proxy="http://127.0.0.1:50086"
+export no_proxy=localhost,127.0.0.1,localaddress,.localdomain.com,www.bilibili.com,pub.flutter-io.cn,storage.flutter-io.cn
 
-# java env
+# flink environment
+export FLINK_HOME="/Library/Flink/flink-1.10.0"
+
+# java environment
 export JDK_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home"
-export JRE_HOME=$JAVA_HOME/jre
-export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib
-export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+# export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=.:$JAVA_HOME/lib:$FLINK_HOME/lib # :$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin:$FLINK_HOME/bin  # :$JRE_HOME/bin
 
 # android & fluter
 export ANDROID_HOME=/Users/whoami/Library/Android/sdk
@@ -43,7 +48,7 @@ export GO111MODULE=auto
 export PATH=$PATH:$GOBIN:$GOPATH/bin
 
 # rabbitmq
-export RABBIT_HOME="/usr/local/Cellar/rabbitmq/3.8.1"
+export RABBIT_HOME="/usr/local/Cellar/rabbitmq/3.8.2"
 export PATH="$RABBIT_HOME/sbin:$PATH"
 
 # tldr
@@ -73,6 +78,9 @@ export EDITOR=nvim
 export PATH="$HOME/.cargo/bin:$PATH"
 # export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 
+# mitmproxy
+export PATH="/Users/whoami/Library/Python/3.7/bin:$PATH"
+
 # ctags
 alias ctags=/usr/local/bin/ctags
 
@@ -80,4 +88,12 @@ alias ctags=/usr/local/bin/ctags
 export MyHOST="127.0.0.1"
 
 bash -c zsh
+
+export PATH="/usr/local/opt/krb5/bin:$PATH"
+export PATH="/usr/local/opt/krb5/sbin:$PATH"
+export LDFLAGS="-L/usr/local/opt/krb5/lib"
+export CPPFLAGS="-I/usr/local/opt/krb5/include"
+export PKG_CONFIG_PATH="/usr/local/opt/krb5/lib/pkgconfig"
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
