@@ -217,57 +217,9 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-######################## personal aliases ############################
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ls='ls -G'
-alias la='ls -lAh'
-alias ll='ls -lh'
-alias ping='prettyping -c 10'
-alias vim="nvim"
-alias vi="nvim"
-alias cat='bat'
-alias du='ncdu'
-# alias python3='~/.pyenv/versions/anaconda3-5.3.1/bin/python3'
-alias pip3='python3 -m pip'
-alias tmux="TERM=screen-256color-bce tmux"
-alias dops="docker ps --format='table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'"
-alias urlen='python3 -c "import sys, urllib.parse as ulp; print(ulp.quote(sys.argv[1]))"'
-alias urlde='python3 -c "import sys, urllib.parse as ulp; print(ulp.unquote(sys.argv[1]))"'
-alias nadb="/Applications/Nox\ App\ Player.app/Contents/MacOS/adb"
-######################## personal aliases ############################
-
-######################## other components ############################
-
-sudo-command-line() {
-    [[ -z $BUFFER ]] && zle up-history
-    if [[ $BUFFER == sudo\ * ]]; then
-        LBUFFER="${LBUFFER#sudo }"
-    elif [[ $BUFFER == $EDITOR\ * ]]; then
-        LBUFFER="${LBUFFER#$EDITOR }"
-        LBUFFER="sudoedit $LBUFFER"
-    elif [[ $BUFFER == sudoedit\ * ]]; then
-        LBUFFER="${LBUFFER#sudoedit }"
-        LBUFFER="$EDITOR $LBUFFER"
-    else
-        LBUFFER="sudo $LBUFFER"
-    fi
-}
-zle -N sudo-command-line
-
-bindkey '^O' sudo-command-line
-
-bindkey -s '^g' 'ranger\n'
-
 # Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+[ -f "$HOME/.config/zsh/shortcutrc" ] && source "$HOME/.config/zsh/shortcutrc"
+[ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
