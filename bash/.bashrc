@@ -87,7 +87,9 @@ alias ctags=/usr/local/bin/ctags
 # markup localhost
 export MyHOST="127.0.0.1"
 
-bash -c zsh
+# using GNU date
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
 
 export PATH="/usr/local/opt/krb5/bin:$PATH"
 export PATH="/usr/local/opt/krb5/sbin:$PATH"
@@ -97,3 +99,4 @@ export PKG_CONFIG_PATH="/usr/local/opt/krb5/lib/pkgconfig"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+bash -c zsh

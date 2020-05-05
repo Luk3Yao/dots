@@ -188,13 +188,13 @@ colors:
   # Default colors
   primary:
     # hard contrast: background = '0x1d2021'
-    background: '0x32302f'
-    # soft contrast: background = '0x32302f'
+    background: '0x1d2021'
+    # soft contrast: background = '0x1d2021'
     foreground: '0xebdbb2'
 
   # Normal colors
   normal:
-    black:   '0x32302f'
+    black:   '0x1d2021'
     red:     '0xcc241d'
     green:   '0x98971a'
     yellow:  '0xd79921'

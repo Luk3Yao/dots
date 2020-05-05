@@ -75,3 +75,4 @@ I think the alacritty with better efficiency is better than the iterm2.
 ### yabai
 
 Since my display is about 32inch, so I need yabai to till-manage my windows not only for functionality but for aesthetics.
+
