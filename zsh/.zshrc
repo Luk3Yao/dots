@@ -220,6 +220,7 @@ fi
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/zsh/shortcutrc" ] && source "$HOME/.config/zsh/shortcutrc"
 [ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
+[ -f "$HOME/.config/zsh/localrc" ] && source "$HOME/.config/zsh/localrc"
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
