@@ -7,7 +7,7 @@
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ls='ls -G'
+alias ls='ls -G --color'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias ping='prettyping -c 10'
