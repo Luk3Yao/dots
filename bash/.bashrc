@@ -27,6 +27,10 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Ho
 export CLASSPATH=.:$JAVA_HOME/lib:$FLINK_HOME/lib # :$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin:$FLINK_HOME/bin  # :$JRE_HOME/bin
 
+# scala environment
+export SCALA_HOME="/Library/Scala/scala-2.13.3"
+export PATH=$PATH:$SCALA_HOME/bin
+
 # android & fluter
 export ANDROID_HOME=/Users/whoami/Library/Android/sdk
 export PATH=${PATH}:$ANDROID_HOME/platform-tools
