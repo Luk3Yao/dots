@@ -200,7 +200,6 @@ init
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -224,4 +223,3 @@ fi
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-export PATH="/Users/whoami/.pyenv/bin:$PATH"
