@@ -225,5 +225,3 @@ fi
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 export PATH="/Users/whoami/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
