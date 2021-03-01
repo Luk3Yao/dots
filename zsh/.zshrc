@@ -217,9 +217,9 @@ fi
 # export ARCHFLAGS="-arch x86_64"
 
 # Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/zsh/shortcutrc" ] && source "$HOME/.config/zsh/shortcutrc"
-[ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
-[ -f "$HOME/.config/zsh/localrc" ] && source "$HOME/.config/zsh/localrc"
+[ -f "$HOME/.config/zsh/shortcut.zsh" ] && source "$HOME/.config/zsh/shortcut.zsh"
+[ -f "$HOME/.config/zsh/alias.zsh" ] && source "$HOME/.config/zsh/alias.zsh"
+[ -f "$HOME/.config/zsh/local.zsh" ] && source "$HOME/.config/zsh/local.zsh"
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
