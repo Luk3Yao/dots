@@ -20,10 +20,10 @@ function proxy () {
     if (( $# > 0 )) {
     case $1 {
         (-u)
-            export http_proxy=http://127.0.0.1:$2
+            export http_proxy="$2://$3"
             export https_proxy=$http_proxy
             if (( $# > 1 )) {
-                echo "🚀 set proxy to port $2"
+                echo "🚀 set proxy to point $2://$3"
             } else {
                 echo "🧩 not enough params"
             }
@@ -45,10 +45,10 @@ function gproxy () {
     if (( $# > 0 )) {
         case $1 {
             (-u)
-            git config --global http.proxy http://127.0.0.1:$2
-            git config --global https.proxy https://127.0.0.1:$2
+            git config --global http.proxy "$2://$3"
+            git config --global https.proxy "$2://$3"
             if (( $# > 1 )) {
-                echo "🚀 set git proxy to port $2\c"
+                echo "🚀 set git proxy to point $2://$3"
             } else {
                 echo "🧩 not enough params"
             }
@@ -224,6 +224,5 @@ fi
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-export PATH="/Users/whoami/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

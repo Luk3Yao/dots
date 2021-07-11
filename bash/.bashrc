@@ -18,7 +18,7 @@ export PATH="/usr/local/opt/ncurses/bin:$PATH"
 export no_proxy=localhost,127.0.0.1,localaddress,.localdomain.com,www.bilibili.com,pub.flutter-io.cn,storage.flutter-io.cn
 
 # flink environment
-export FLINK_HOME="/Library/Flink/flink-1.10.0"
+export FLINK_HOME="$HOME/Opt/Flink/flink-1.11.1"
 
 # java environment
 export JDK_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home"
