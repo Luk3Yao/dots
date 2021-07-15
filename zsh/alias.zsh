@@ -21,3 +21,4 @@ alias urlde='python3 -c "import sys, urllib.parse as ulp; print(ulp.unquote(sys.
 alias nadb="/Applications/Nox\ App\ Player.app/Contents/MacOS/adb"
 alias vi='nvim'
 alias vim='nvim'
+alias ls='ls --color'
